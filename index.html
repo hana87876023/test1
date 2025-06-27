@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台湾観光ガイド - 美しい台湾を発見しよう</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <h1>台湾観光ガイド</h1>
+            </div>
+            <nav class="header-nav">
+                <a href="#map" class="nav-link">地図</a>
+                <a href="#regions" class="nav-link">エリア</a>
+                <a href="#attractions" class="nav-link">観光地</a>
+            </nav>
+            <div class="countdown-timer">
+                <div class="timer-label">特別企画まで</div>
+                <div class="timer-display">
+                    <div class="time-unit">
+                        <span id="days">07</span>
+                        <label>日</label>
+                    </div>
+                    <div class="time-unit">
+                        <span id="hours">12</span>
+                        <label>時間</label>
+                    </div>
+                    <div class="time-unit">
+                        <span id="minutes">30</span>
+                        <label>分</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <!-- ヒーローセクション -->
+        <section class="hero-section">
+            <div class="hero-background">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1582001368542-d0b8e9c9529a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509003433451-deb8bb0e2893?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"></div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h2 class="hero-title">台湾の魅力を発見しよう</h2>
+                <p class="hero-subtitle">美しい島国の隠れた宝石を探索</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">主要エリア</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">観光スポット</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">美食体験</span>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="scrollToMap()">
+                    <i class="fas fa-map-marked-alt"></i>
+                    地図で探索する
+                </button>
+            </div>
+        </section>
+
+        <!-- 地図＆観光地表示セクション -->
+        <section class="map-attractions-section" id="map">
+            <div class="section-header">
+                <h2>台湾エリア別観光ガイド</h2>
+                <p>地図上のエリアを選択して、おすすめの観光スポットを探索してください</p>
+            </div>
+            
+            <div class="map-attractions-container">
+                <!-- 左側：地図エリア -->
+                <div class="map-container">
+                    <div class="map-header">
+                        <h3>台湾地図</h3>
+                        <div class="selected-region-info">
+                            <span id="selected-region-name">エリアを選択してください</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Leaflet地図 -->
+                    <div id="taiwan-map" class="taiwan-leaflet-map"></div>
+                </div>
+
+                <!-- 右側：観光地表示エリア -->
+                <div class="attractions-container">
+                    <!-- 地域選択ボタン -->
+                    <div class="region-selector">
+                        <button class="region-select-btn active" data-region="north">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>台北</span>
+                        </button>
+                        <button class="region-select-btn" data-region="central">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>台中</span>
+                        </button>
+                        <button class="region-select-btn" data-region="south">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>高雄</span>
+                        </button>
+                        <button class="region-select-btn" data-region="east">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>花蓮・台東</span>
+                        </button>
+                    </div>
+                    
+                    <div class="attractions-header">
+                        <h3 id="attractions-title">観光スポット</h3>
+                        <div class="attractions-filter">
+                            <button class="filter-btn active" data-filter="all">すべて</button>
+                            <button class="filter-btn" data-filter="nature">自然</button>
+                            <button class="filter-btn" data-filter="culture">文化</button>
+                            <button class="filter-btn" data-filter="food">グルメ</button>
+                        </div>
+                    </div>
+                    
+                    <!-- デフォルト表示 -->
+                    <div class="attractions-default" id="attractions-default">
+                        <div class="default-content">
+                            <i class="fas fa-map-marked-alt default-icon"></i>
+                            <h4>台湾の魅力を発見</h4>
+                            <p>左の地図からエリアを選択して、<br>おすすめの観光スポットを探索してください</p>
+                            <div class="preview-cards">
+                                <div class="preview-card">
+                                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=90" alt="台北101">
+                                    <span>台北101</span>
+                                </div>
+                                <div class="preview-card">
+                                    <img src="https://images.unsplash.com/photo-1582001368542-d0b8e9c9529a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=90" alt="九份">
+                                    <span>九份老街</span>
+                                </div>
+                                <div class="preview-card">
+                                    <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=90" alt="太魯閣">
+                                    <span>太魯閣</span>
+                                </div>
+                                <div class="preview-card">
+                                    <img src="https://images.unsplash.com/photo-1509003433451-deb8bb0e2893?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=90" alt="日月潭">
+                                    <span>日月潭</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 観光地カード表示エリア -->
+                    <div class="attractions-grid" id="attractions-grid" style="display: none;">
+                        <!-- JavaScriptで動的に生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 人気観光地ランキング -->
+        <section class="popular-attractions">
+            <div class="section-header">
+                <h2>人気観光スポット TOP 6</h2>
+                <p>台湾で最も人気の観光地をチェック</p>
+            </div>
+            <div class="popular-grid">
+                <div class="popular-card rank-1">
+                    <div class="rank-badge">1</div>
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=90" alt="台北101">
+                    <div class="card-content">
+                        <h4>台北101</h4>
+                        <p>台湾のシンボルタワー</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-card rank-2">
+                    <div class="rank-badge">2</div>
+                    <img src="https://images.unsplash.com/photo-1582001368542-d0b8e9c9529a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=90" alt="九份">
+                    <div class="card-content">
+                        <h4>九份老街</h4>
+                        <p>ジブリ映画の舞台</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-card rank-3">
+                    <div class="rank-badge">3</div>
+                    <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=90" alt="太魯閣">
+                    <div class="card-content">
+                        <h4>太魯閣国家公園</h4>
+                        <p>絶景の大理石峡谷</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-card">
+                    <div class="rank-badge">4</div>
+                    <img src="https://images.unsplash.com/photo-1549887534-88ad96d7e219?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=90" alt="士林夜市">
+                    <div class="card-content">
+                        <h4>士林夜市</h4>
+                        <p>台湾グルメの宝庫</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-card">
+                    <div class="rank-badge">5</div>
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=90" alt="美麗島駅">
+                    <div class="card-content">
+                        <h4>美麗島駅</h4>
+                        <p>世界最美の地下鉄駅</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular-card">
+                    <div class="rank-badge">6</div>
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=90" alt="日月潭">
+                    <div class="card-content">
+                        <h4>日月潭</h4>
+                        <p>台湾最大の美しい湖</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>台湾観光ガイド</h4>
+                <p>美しい台湾の魅力を発見し、<br>最高の旅行体験をお届けします。</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>エリア</h4>
+                <ul>
+                    <li><a href="#" onclick="selectRegion('north')">北部エリア</a></li>
+                    <li><a href="#" onclick="selectRegion('central')">中部エリア</a></li>
+                    <li><a href="#" onclick="selectRegion('south')">南部エリア</a></li>
+                    <li><a href="#" onclick="selectRegion('east')">東部エリア</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>人気スポット</h4>
+                <ul>
+                    <li><a href="#" class="popular-spot-link">台北101</a></li>
+                    <li><a href="#" class="popular-spot-link">九份老街</a></li>
+                    <li><a href="#" class="popular-spot-link">太魯閣国家公園</a></li>
+                    <li><a href="#" class="popular-spot-link">士林夜市</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>お問い合わせ</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> info@taiwan-guide.com</p>
+                    <p><i class="fas fa-phone"></i> +81-3-1234-5678</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 東京都渋谷区</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 台湾観光ガイド. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
