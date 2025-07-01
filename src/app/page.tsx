@@ -1,135 +1,143 @@
-import TaiwanMap from '@/components/TaiwanMap'
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
+import { imageUrls } from '@/lib/imageUrls'
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-green-500 opacity-90"></div>
-        <div className="relative z-10 text-white px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            美しい台湾への旅
+      {/* Hero Section with Background Image */}
+      <section className="relative h-screen flex items-center justify-center">
+        <Image
+          src={imageUrls.heroes.taiwanNightView}
+          alt="台湾の夜景"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-70"></div>
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+            台湾へようこそ
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            息をのむような自然、豊かな文化、美味しい料理。
-            台湾の魅力を発見しましょう。
+            美食、文化、そして温かい人々があなたを待っています
           </p>
-          <Link
-            href="#map"
-            className="btn-primary text-lg px-8 py-4 inline-block"
-          >
-            旅を始める
+          <Link href="/areas" className="btn-primary">
+            エリアを探索する
           </Link>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section id="map" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title">台湾を探索する</h2>
-          <p className="text-center text-gray-600 mb-12 text-lg">
-            地図上の地域をクリックして、その地域の魅力を発見してください
-          </p>
-          <TaiwanMap />
-        </div>
-      </section>
-
-      {/* Featured Destinations */}
+      {/* Features Grid with Images */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title">人気の観光地</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* 花蓮 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
-                <span className="text-white text-6xl">🏔️</span>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="section-title">台湾の魅力</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* 観光地 */}
+            <Link href="/areas" className="card group hover:scale-105 transition-transform duration-300">
+              <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
+                <Image
+                  src={imageUrls.areas.taipei101}
+                  alt="台北101"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">花蓮・太魯閣</h3>
-                <p className="text-gray-600 mb-4">
-                  壮大な渓谷と美しい自然が織りなす絶景スポット
-                </p>
-                <Link
-                  href="/area/hualien"
-                  className="text-taiwan-ocean font-medium hover:underline"
-                >
-                  詳細を見る →
-                </Link>
-              </div>
-            </div>
+              <h3 className="text-xl font-bold mb-2">観光地</h3>
+              <p className="text-gray-600">台北101、九份、日月潭など魅力的なスポット</p>
+            </Link>
 
-            {/* 台東 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-r from-orange-400 to-red-500 flex items-center justify-center">
-                <span className="text-white text-6xl">🌊</span>
+            {/* 台湾料理 */}
+            <Link href="/culture-differences" className="card group hover:scale-105 transition-transform duration-300">
+              <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
+                <Image
+                  src={imageUrls.culture.taiwanFood}
+                  alt="台湾料理"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">台東・知本</h3>
-                <p className="text-gray-600 mb-4">
-                  温泉と海岸線が美しい癒しの観光地
-                </p>
-                <Link
-                  href="/area/taitung"
-                  className="text-taiwan-ocean font-medium hover:underline"
-                >
-                  詳細を見る →
-                </Link>
-              </div>
-            </div>
+              <h3 className="text-xl font-bold mb-2">文化と食事</h3>
+              <p className="text-gray-600">小籠包、タピオカミルクティー、夜市グルメ</p>
+            </Link>
 
-            {/* 台北 */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
-                <span className="text-white text-6xl">🏙️</span>
+            {/* 交通 */}
+            <Link href="/train-guide" className="card group hover:scale-105 transition-transform duration-300">
+              <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
+                <Image
+                  src={imageUrls.travel.taiwanHsr}
+                  alt="台湾高速鉄道"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">台北・九份</h3>
-                <p className="text-gray-600 mb-4">
-                  現代都市と伝統文化が融合する台湾の首都
-                </p>
-                <Link
-                  href="/area/taipei"
-                  className="text-taiwan-ocean font-medium hover:underline"
-                >
-                  詳細を見る →
-                </Link>
-              </div>
+              <h3 className="text-xl font-bold mb-2">交通ガイド</h3>
+              <p className="text-gray-600">高速鉄道、MRT、バスの使い方</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery Section */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="section-title">フォトギャラリー</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="relative h-64 overflow-hidden rounded-lg">
+              <Image
+                src={imageUrls.areas.jiufen}
+                alt="九份の街並み"
+                fill
+                className="object-cover hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden rounded-lg">
+              <Image
+                src={imageUrls.culture.nightMarket}
+                alt="夜市"
+                fill
+                className="object-cover hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden rounded-lg">
+              <Image
+                src={imageUrls.areas.sunMoonLake}
+                alt="日月潭"
+                fill
+                className="object-cover hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <div className="relative h-64 overflow-hidden rounded-lg">
+              <Image
+                src={imageUrls.culture.temple}
+                alt="台湾の寺院"
+                fill
+                className="object-cover hover:scale-110 transition-transform duration-300"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Travel Guides */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title">旅行ガイド</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link href="/how-to-travel" className="group">
-              <div className="bg-gradient-to-r from-green-400 to-blue-500 rounded-lg p-8 text-white text-center card-hover">
-                <div className="text-4xl mb-4">✈️</div>
-                <h3 className="text-xl font-bold mb-2">観光方法</h3>
-                <p className="opacity-90">台湾旅行の基本情報とコツ</p>
-              </div>
-            </Link>
-
-            <Link href="/train-guide" className="group">
-              <div className="bg-gradient-to-r from-purple-400 to-pink-500 rounded-lg p-8 text-white text-center card-hover">
-                <div className="text-4xl mb-4">🚄</div>
-                <h3 className="text-xl font-bold mb-2">電車ガイド</h3>
-                <p className="opacity-90">高速鉄道と在来線の利用方法</p>
-              </div>
-            </Link>
-
-            <Link href="/culture-differences" className="group">
-              <div className="bg-gradient-to-r from-orange-400 to-red-500 rounded-lg p-8 text-white text-center card-hover">
-                <div className="text-4xl mb-4">🏮</div>
-                <h3 className="text-xl font-bold mb-2">文化と習慣</h3>
-                <p className="opacity-90">台湾の文化的背景と礼儀</p>
-              </div>
-            </Link>
-          </div>
+      {/* Call to Action with Background */}
+      <section className="relative py-20">
+        <Image
+          src={imageUrls.heroes.taiwanLandscape}
+          alt="台湾の風景"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative z-10 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            台湾旅行を始めよう
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            忘れられない思い出があなたを待っています
+          </p>
+          <Link href="/how-to-travel" className="btn-primary">
+            旅行プランを立てる
+          </Link>
         </div>
       </section>
     </div>
