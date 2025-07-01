@@ -1,11 +1,20 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import { imageUrls, additionalImages } from '@/lib/imageUrls'
 
 export default function CultureDifferences() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-90"></div>
+        <Image
+          src={imageUrls.heroes.cultureHero}
+          alt="台湾の文化"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-80"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             台湾の文化と習慣
@@ -40,9 +49,12 @@ export default function CultureDifferences() {
             </div>
             <div className="flex-1">
               <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                <div className="w-full h-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-                  <span className="text-8xl opacity-60">🏮</span>
-                </div>
+                <Image
+                  src={additionalImages.lanterns}
+                  alt="台湾の伝統的なランタン"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -133,9 +145,12 @@ export default function CultureDifferences() {
             </div>
             <div className="flex-1">
               <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                <div className="w-full h-full bg-gradient-to-br from-red-400 to-orange-500 flex items-center justify-center">
-                  <span className="text-8xl opacity-60">🏯</span>
-                </div>
+                <Image
+                  src={imageUrls.culture.temple}
+                  alt="台湾の寺院"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -205,9 +220,12 @@ export default function CultureDifferences() {
               </div>
               <div className="flex-1">
                 <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                  <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-                    <span className="text-8xl opacity-60">🌃</span>
-                  </div>
+                  <Image
+                    src={imageUrls.culture.nightMarket}
+                    alt="台湾の夜市"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -232,9 +250,12 @@ export default function CultureDifferences() {
               </div>
               <div className="flex-1">
                 <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                  <div className="w-full h-full bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center">
-                    <span className="text-8xl opacity-60">👨‍👩‍👧‍👦</span>
-                  </div>
+                  <Image
+                    src={imageUrls.culture.festival}
+                    alt="台湾の家族文化"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>

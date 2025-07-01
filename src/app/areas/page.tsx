@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { areaData } from '@/lib/areaData'
+import { imageUrls } from '@/lib/imageUrls'
 
 export default function AreasPage() {
   const areas = Object.values(areaData)
@@ -8,7 +10,14 @@ export default function AreasPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-500 opacity-90"></div>
+        <Image
+          src={imageUrls.heroes.areasHero}
+          alt="台湾の風景"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-500 opacity-80"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             地域別観光ガイド
@@ -24,15 +33,22 @@ export default function AreasPage() {
           {areas.map((area) => (
             <Link key={area.id} href={`/area/${area.id}`} className="group">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                <div className="h-48 bg-gradient-to-br from-blue-400 to-green-400 flex items-center justify-center">
-                  <span className="text-white text-6xl opacity-80">
-                    {area.id === 'hualien' && '🏔️'}
-                    {area.id === 'taitung' && '🌊'}
-                    {area.id === 'taipei' && '🏙️'}
-                    {area.id === 'taichung' && '🎨'}
-                    {area.id === 'tainan' && '🏯'}
-                    {area.id === 'kaohsiung' && '🌈'}
-                  </span>
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={
+                      area.id === 'taipei' ? imageUrls.areas.taipei :
+                      area.id === 'taichung' ? imageUrls.areas.taichung :
+                      area.id === 'tainan' ? imageUrls.areas.tainan :
+                      area.id === 'kaohsiung' ? imageUrls.areas.kaohsiung :
+                      area.id === 'hualien' ? imageUrls.areas.taroko :
+                      area.id === 'taitung' ? imageUrls.areas.sunMoonLake :
+                      imageUrls.areas.taipei101
+                    }
+                    alt={area.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold mb-2 text-gray-800 group-hover:text-taiwan-ocean transition-colors">

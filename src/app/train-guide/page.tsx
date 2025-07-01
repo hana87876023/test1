@@ -1,11 +1,20 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import { imageUrls } from '@/lib/imageUrls'
 
 export default function TrainGuide() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-90"></div>
+        <Image
+          src={imageUrls.heroes.trainHero}
+          alt="台湾の電車"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-80"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             台湾電車ガイド
@@ -40,9 +49,12 @@ export default function TrainGuide() {
             </div>
             <div className="flex-1">
               <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                  <span className="text-8xl opacity-60">🚄</span>
-                </div>
+                <Image
+                  src={imageUrls.train.hsrStation}
+                  alt="台湾高速鉄道駅"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>

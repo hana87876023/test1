@@ -1,12 +1,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { imageUrls } from '@/lib/imageUrls'
 
 export default function HowToTravel() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-500 opacity-90"></div>
+        <Image
+          src={imageUrls.heroes.travelHero}
+          alt="台湾旅行"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-blue-500 opacity-80"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             台湾観光方法ガイド
@@ -62,9 +70,12 @@ export default function HowToTravel() {
               </div>
               <div className="flex-1">
                 <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                  <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                    <span className="text-8xl opacity-60">🚄</span>
-                  </div>
+                  <Image
+                    src={imageUrls.travel.taiwanHsr}
+                    alt="台湾高速鉄道"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -84,9 +95,12 @@ export default function HowToTravel() {
               </div>
               <div className="flex-1">
                 <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                  <div className="w-full h-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
-                    <span className="text-8xl opacity-60">🚇</span>
-                  </div>
+                  <Image
+                    src={imageUrls.travel.mrt}
+                    alt="MRT地下鉄"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -97,15 +111,25 @@ export default function HowToTravel() {
         <section className="mb-16">
           <h2 className="section-title">宿泊</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="text-4xl mb-4 text-center">🏨</div>
-              <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">ホテル</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• 国際チェーンから地元ホテルまで</li>
-                <li>• 朝食付きプランが多い</li>
-                <li>• 英語対応可能な場合が多い</li>
-                <li>• 価格帯：NT$2,000〜15,000/泊</li>
-              </ul>
+            <div className="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <Image
+                  src={imageUrls.travel.hotel}
+                  alt="ホテル"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 text-center">🏨</div>
+                <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">ホテル</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• 国際チェーンから地元ホテルまで</li>
+                  <li>• 朝食付きプランが多い</li>
+                  <li>• 英語対応可能な場合が多い</li>
+                  <li>• 価格帯：NT$2,000〜15,000/泊</li>
+                </ul>
+              </div>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6">
               <div className="text-4xl mb-4 text-center">🏠</div>
@@ -152,9 +176,12 @@ export default function HowToTravel() {
             </div>
             <div className="flex-1">
               <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                <div className="w-full h-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-                  <span className="text-8xl opacity-60">🍜</span>
-                </div>
+                <Image
+                  src={imageUrls.culture.taiwanFood}
+                  alt="台湾グルメ"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
