@@ -42,7 +42,7 @@ export const imageUrls = {
     currency: 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=2571'
   },
   train: {
-    hsrStation: '/images/train/hsr-new.jpg',
+    hsrStation: '/images/train/hsr-download.jpg',
     trainInterior: 'https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=2571',
     ticketMachine: 'https://images.unsplash.com/photo-1557672199-6e8e3211b8775?q=80&w=2542',
     platform: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?q=80&w=2570'
