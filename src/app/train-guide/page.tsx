@@ -145,9 +145,12 @@ export default function TrainGuide() {
             </div>
             <div className="flex-1">
               <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                <div className="w-full h-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
-                  <span className="text-8xl opacity-60">🚂</span>
-                </div>
+                <Image
+                  src={imageUrls.train.tra}
+                  alt="台湾鉄路"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>

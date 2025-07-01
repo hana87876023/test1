@@ -160,38 +160,68 @@ export default function CultureDifferences() {
         <section className="mb-16">
           <h2 className="section-title">社会的習慣・マナー</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="text-4xl mb-4 text-center">🤝</div>
-              <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">挨拶・礼儀</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• 握手が一般的な挨拶</li>
-                <li>• 名刺は両手で受け取る</li>
-                <li>• 年長者への敬語使用</li>
-                <li>• お辞儀は軽く会釈程度</li>
-                <li>• 靴を脱ぐ習慣は少ない</li>
-              </ul>
+            <div className="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <Image
+                  src={imageUrls.culture.greeting}
+                  alt="台湾の挨拶文化"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 text-center">🤝</div>
+                <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">挨拶・礼儀</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• 握手が一般的な挨拶</li>
+                  <li>• 名刺は両手で受け取る</li>
+                  <li>• 年長者への敬語使用</li>
+                  <li>• お辞儀は軽く会釈程度</li>
+                  <li>• 靴を脱ぐ習慣は少ない</li>
+                </ul>
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="text-4xl mb-4 text-center">🍽️</div>
-              <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">食事マナー</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• 箸の使い方は日本と類似</li>
-                <li>• 取り分け用の箸を使う</li>
-                <li>• 乾杯の文化がある</li>
-                <li>• 年長者が先に食べ始める</li>
-                <li>• 残すことは失礼ではない</li>
-              </ul>
+            <div className="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <Image
+                  src={imageUrls.culture.dining}
+                  alt="台湾の食事文化"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 text-center">🍽️</div>
+                <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">食事マナー</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• 箸の使い方は日本と類似</li>
+                  <li>• 取り分け用の箸を使う</li>
+                  <li>• 乾杯の文化がある</li>
+                  <li>• 年長者が先に食べ始める</li>
+                  <li>• 残すことは失礼ではない</li>
+                </ul>
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="text-4xl mb-4 text-center">🎁</div>
-              <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">贈り物</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• 両手で渡し、受け取る</li>
-                <li>• 包装は重要視される</li>
-                <li>• 時計は避ける（縁起が悪い）</li>
-                <li>• 白い花は避ける</li>
-                <li>• 赤い包装は縁起が良い</li>
-              </ul>
+            <div className="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <Image
+                  src={imageUrls.culture.gift}
+                  alt="台湾の贈り物文化"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 text-center">🎁</div>
+                <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">贈り物</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• 両手で渡し、受け取る</li>
+                  <li>• 包装は重要視される</li>
+                  <li>• 時計は避ける（縁起が悪い）</li>
+                  <li>• 白い花は避ける</li>
+                  <li>• 赤い包装は縁起が良い</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>

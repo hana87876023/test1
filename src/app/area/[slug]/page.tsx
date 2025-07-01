@@ -2,6 +2,7 @@ import { areaData } from '@/lib/areaData'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { imageUrls } from '@/lib/imageUrls'
 
 interface AreaPageProps {
   params: {
@@ -27,11 +28,20 @@ export default function AreaPage({ params }: AreaPageProps) {
       {/* Hero Section */}
       <section className="relative h-96 md:h-[500px] flex items-center justify-center">
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="absolute inset-0">
-          <div className="w-full h-full bg-gradient-to-r from-blue-500 to-green-500 flex items-center justify-center">
-            <span className="text-9xl opacity-20">🏔️</span>
-          </div>
-        </div>
+        <Image
+          src={
+            params.slug === 'taipei' ? imageUrls.areas.taipei :
+            params.slug === 'taichung' ? imageUrls.areas.taichung :
+            params.slug === 'tainan' ? imageUrls.areas.tainan :
+            params.slug === 'kaohsiung' ? imageUrls.areas.kaohsiung :
+            params.slug === 'hualien' ? imageUrls.areas.hualien :
+            params.slug === 'taitung' ? imageUrls.areas.taitung :
+            imageUrls.areas.taipei101
+          }
+          alt={data.title}
+          fill
+          className="object-cover"
+        />
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             {data.title}
@@ -60,11 +70,21 @@ export default function AreaPage({ params }: AreaPageProps) {
               </div>
               <div className="flex-1">
                 <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
-                  <div className="w-full h-full bg-gradient-to-br from-blue-400 to-green-400 flex items-center justify-center">
-                    <span className="text-6xl opacity-60">
-                      {index === 0 ? '🏔️' : index === 1 ? '🌊' : '🏮'}
-                    </span>
-                  </div>
+                  <Image
+                    src={
+                      index === 0 ? (
+                        params.slug === 'taipei' ? imageUrls.areas.taipei101 :
+                        params.slug === 'hualien' ? imageUrls.areas.taroko :
+                        params.slug === 'taitung' ? imageUrls.areas.sunMoonLake :
+                        imageUrls.areas.taipei
+                      ) :
+                      index === 1 ? imageUrls.culture.nightMarket :
+                      imageUrls.culture.temple
+                    }
+                    alt={section.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>

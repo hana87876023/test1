@@ -131,25 +131,45 @@ export default function HowToTravel() {
                 </ul>
               </div>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="text-4xl mb-4 text-center">🏠</div>
-              <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">民宿・B&B</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• 家庭的な雰囲気を楽しめる</li>
-                <li>• 地元の文化に触れられる</li>
-                <li>• オーナーとの交流が魅力</li>
-                <li>• 価格帯：NT$1,500〜4,000/泊</li>
-              </ul>
+            <div className="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <Image
+                  src={imageUrls.travel.guesthouse}
+                  alt="台湾の民宿"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 text-center">🏠</div>
+                <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">民宿・B&B</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• 家庭的な雰囲気を楽しめる</li>
+                  <li>• 地元の文化に触れられる</li>
+                  <li>• オーナーとの交流が魅力</li>
+                  <li>• 価格帯：NT$1,500〜4,000/泊</li>
+                </ul>
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <div className="text-4xl mb-4 text-center">🛏️</div>
-              <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">ゲストハウス</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li>• バックパッカー向け</li>
-                <li>• 他の旅行者との交流</li>
-                <li>• キッチン利用可能な場合も</li>
-                <li>• 価格帯：NT$800〜2,500/泊</li>
-              </ul>
+            <div className="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <Image
+                  src={imageUrls.travel.hostel}
+                  alt="ゲストハウス"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+                <div className="text-4xl mb-4 text-center">🛏️</div>
+                <h3 className="text-xl font-bold mb-4 text-taiwan-ocean text-center">ゲストハウス</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• バックパッカー向け</li>
+                  <li>• 他の旅行者との交流</li>
+                  <li>• キッチン利用可能な場合も</li>
+                  <li>• 価格帯：NT$800〜2,500/泊</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
