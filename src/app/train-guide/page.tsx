@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function TrainGuide() {
   return (
     <div className="min-h-screen">
